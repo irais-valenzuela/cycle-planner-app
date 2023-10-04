@@ -19,7 +19,7 @@ app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "./path/to/index.html"));
 });
 
-// handles 500 errors
+// will handle 500 errors
 app.use((err, req, res, next) => {
   console.error(err);
   console.error(err.stack);
