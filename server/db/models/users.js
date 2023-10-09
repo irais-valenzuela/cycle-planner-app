@@ -1,5 +1,6 @@
 const db = require("../db.js");
 const { DataTypes } = require("sequelize");
+const moment = require('moment')
 
 // we can think more about what else we want to add but for now just this
 
@@ -25,7 +26,7 @@ const User = db.define("User", {
     allowNull: true,
     validate: {
       is: {
-        args: /^(\+\d{1,2}\s?)?(\d{10})$/, 
+        args: /^(\+\d{1,2}\s?)?(\d{10})$/,
         msg: "Please enter a valid phone number.",
       },
     },
@@ -35,7 +36,7 @@ const User = db.define("User", {
     allowNull: false,
     validate: {
       len: {
-        args: [8, 10], 
+        args: [8, 10],
         msg: "Password must be between 8 and 10 characters long.",
       },
     },
@@ -54,14 +55,14 @@ const User = db.define("User", {
     },
   },
   dietaryRestrictions: {
-    type: DataTypes.ARRAY,
+    type: DataTypes.ARRAY(DataTypes.STRING),
   },
   getNotified: {
     type: DataTypes.BOOLEAN,
   },
   currentPhase: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
 });
 

@@ -1,11 +1,13 @@
-const router = require("express").Router()
+const router = require("express").Router();
+const { User } = require("../db/index");
 
-router.get("/", (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
-    res.status(200).send("in user routes")
+    const users = await User.findAll();
+    res.status(200).send(users);
   } catch (error) {
-    next(error)
+    next(error);
   }
-})
+});
 
-module.exports = router
+module.exports = router;
