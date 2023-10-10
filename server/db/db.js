@@ -1,8 +1,6 @@
-const Sequelize = require('sequelize');
+const { Sequelize } = require('sequelize');
 
-// creates connection to database
-const db = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost:5432/cycle-tracker-app', {
-  logging: true // unless you like the logs
-});
+// connection to database
+const db = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost:5432/cycle-planner-app');
 
 module.exports = db;
