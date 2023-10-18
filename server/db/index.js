@@ -3,12 +3,14 @@ const User =  require("./models/users")
 const Plan = require("./models/plan")
 const MenstrualPhaseSuggestions = require("./models/menstrualPhase")
 const FollicularPhaseSuggestions = require("./models/follicularPhase")
+const OvulatoryPhaseSuggestions = require("./models/ovulatoryPhase")
 
 module.exports = {
   User,
   Plan, 
   MenstrualPhaseSuggestions, 
-  FollicularPhaseSuggestions
+  FollicularPhaseSuggestions, 
+  OvulatoryPhaseSuggestions
 }
 
 User.hasOne(Plan)

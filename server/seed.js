@@ -1,5 +1,10 @@
 const db = require("./db/db");
-const { User, MenstrualPhaseSuggestions, FollicularPhaseSuggestions } = require("./db/index");
+const {
+  User,
+  MenstrualPhaseSuggestions,
+  FollicularPhaseSuggestions,
+  OvulatoryPhaseSuggestions,
+} = require("./db/index");
 
 const seed = async () => {
   try {
@@ -136,18 +141,18 @@ const seed = async () => {
           "Avocado",
           "Why: Vitamin C: These citrus fruits are rich in vitamin C, which is an antioxidant that supports immune function and helps the body absorb iron. This can be especially beneficial during the follicular phase to replenish iron levels after potential blood loss during menstruation.Healthy Fats: Avocado is a great source of healthy monounsaturated fats, which are beneficial for hormone regulation and overall health. Fiber: Avocado is also high in fiber, which can help regulate digestion and reduce bloating.",
         ],
-        proteins: ["Skinless Chicken", "Lentils", "Trout", "Cod"],
+        proteins: ["Skinless Chicken", "Lentils", "Trout", "Cod", "Eggs"],
         dietaryRestrictionProteins: ["Lentils", "Chickpeas"],
         grains: ["Oats", "Whole Wheat Bread"],
         nuts: ["Cashews", "Pumpkin Seeds"],
-        other: [],
+        other: ["Nut butters", "Olives"],
         disclaimer:
           "Remember that portion sizes and individual dietary preferences play a significant role in your food choices. It's important to maintain a balanced diet and adapt it to your specific needs and taste. Also, keep in mind that these dietary suggestions are general guidelines, and if you have specific dietary concerns, allergies, or health conditions, it's a good idea to consult a healthcare professional or a registered dietitian for personalized advice.",
       },
       fitness: {
-        Day1ThroughDay3: ["Walking", "Swimming", "Cycling"],
-        Day4ThroughDay7: ["Running", "Squats", "Dead-lifts", "Push-ups"],
-        Day8ThroughDay10: ["HIIT Workouts", "Strength Training"],
+        Day1ThroughDay3: ["Walking", "Swimming", "Cycling", "Cardio"],
+        Day4ThroughDay7: ["Running", "Squats", "Hiking", "Push-ups"],
+        Day8ThroughDay10: ["Dancing", "Strength Training"],
         disclaimer:
           "Remember that these are general suggestions, and it's essential to adjust the intensity and duration of your workouts based on your comfort and energy levels. Always listen to your body and avoid pushing yourself too hard. If you experience severe pain or discomfort during exercise, it's okay to take a break or rest. Additionally, if you have specific fitness goals or conditions, consider consulting with a fitness professional for a tailored workout plan.",
       },
@@ -166,6 +171,56 @@ const seed = async () => {
           "Listen to Inspirational Podcasts",
           "Quality time with loved ones",
         ],
+        disclaimer:
+          "Remember, personal development isn't just about career growth; it's also about self-care and well-being. Both aspects are interlinked, and taking care of yourself enhances your career potential. Adapt your personal development activities to what feels most fulfilling and appropriate for you during your menstrual cycle. Always prioritize self-care and listen to your body's signals.",
+      },
+    });
+
+    await OvulatoryPhaseSuggestions.create({
+      foods: {
+        vegetables: [
+          "Asparagus",
+          "Bell Peppers",
+          "Chard",
+          "Spinach",
+          "Tomato",
+          "Brussel Sprouts",
+          "Why: Provides essential vitamins and minerals like folate and iron, which are important during this phase.",
+        ],
+        fruits: [
+          "Strawberries",
+          "Raspberries",
+          "Coconut",
+          "Guava",
+          "Why: Beneficial for hormonal balance.",
+        ],
+        proteins: [
+          "Lamb",
+          "Salmon",
+          "Tuna",
+          "Shrimp",
+          "Why: Support hormonal balance",
+        ],
+        dietaryRestrictionProteins: ["Red lentils"],
+        grains: ["Quinoa"],
+        nuts: [
+          "Almonds",
+          "Pumpkin Seeds",
+          "Flax seeds",
+          "Why: These are good sources of healthy fats and fiber, which can help support your hormonal balance.",
+        ],
+        other: ["Coffee", "Chocolate"],
+        disclaimer:
+          "Remember that portion sizes and individual dietary preferences play a significant role in your food choices. It's important to maintain a balanced diet and adapt it to your specific needs and taste. Also, keep in mind that these dietary suggestions are general guidelines, and if you have specific dietary concerns, allergies, or health conditions, it's a good idea to consult a healthcare professional or a registered dietitian for personalized advice.",
+      },
+      fitness: {
+        Day1ThroughDay4: ["HIIT Workouts", "Boxing", "Cycling"],
+        disclaimer:
+          "Remember that these are general suggestions, and it's essential to adjust the intensity and duration of your workouts based on your comfort and energy levels. Always listen to your body and avoid pushing yourself too hard. If you experience severe pain or discomfort during exercise, it's okay to take a break or rest. Additionally, if you have specific fitness goals or conditions, consider consulting with a fitness professional for a tailored workout plan.",
+      },
+      personalDevelopment: {
+        careerDevelopment: ["Pitch ideas", "Network", "Collaborate"],
+        selfCare: ["Hang out with friends", "Be social"],
         disclaimer:
           "Remember, personal development isn't just about career growth; it's also about self-care and well-being. Both aspects are interlinked, and taking care of yourself enhances your career potential. Adapt your personal development activities to what feels most fulfilling and appropriate for you during your menstrual cycle. Always prioritize self-care and listen to your body's signals.",
       },
