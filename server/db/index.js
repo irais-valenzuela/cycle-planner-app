@@ -1,14 +1,14 @@
 // make associations here!
 const User =  require("./models/users")
 const Plan = require("./models/plan")
-const MenstrualPhase = require("./models/menstrualPhase")
-const FollicularPhase = require("./models/follicularPhase")
+const MenstrualPhaseSuggestions = require("./models/menstrualPhase")
+const FollicularPhaseSuggestions = require("./models/follicularPhase")
 
 module.exports = {
   User,
   Plan, 
-  MenstrualPhase, 
-  FollicularPhase
+  MenstrualPhaseSuggestions, 
+  FollicularPhaseSuggestions
 }
 
 User.hasOne(Plan)

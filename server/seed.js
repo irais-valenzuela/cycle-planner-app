@@ -1,5 +1,5 @@
 const db = require("./db/db");
-const { User, MenstrualPhase, FollicularPhase } = require("./db/index");
+const { User, MenstrualPhaseSuggestions, FollicularPhaseSuggestions } = require("./db/index");
 
 const seed = async () => {
   try {
@@ -24,7 +24,7 @@ const seed = async () => {
       getNotified: true,
     });
 
-    await MenstrualPhase.create({
+    await MenstrualPhaseSuggestions.create({
       foods: {
         vegetables: [
           "Mushrooms",
@@ -101,24 +101,25 @@ const seed = async () => {
       },
       personalDevelopment: {
         careerDevelopment: [
-          "Career Research: Take this time to explore new career opportunities, courses, or certifications that can help you advance in your field.",
-          "Professional Reading: Read books, articles, or research related to your career or industry. It's an excellent way to stay informed and inspired.",
-          "Networking: Reach out to professional contacts or peers for virtual coffee chats or networking opportunities that don't require too much physical effort.",
-          "Professional Development Events: If there are virtual webinars, conferences, or workshops related to your field, consider participating to stay updated and network with professionals.",
+          "Career Research",
+          "Professional Reading",
+          "Networking",
+          "Professional Development Events",
           "Resume or Portfolio Update: If you're considering a job change or advancement, work on updating your resume, LinkedIn profile, or professional portfolio.",
           "Goal Setting: Review your career goals and set actionable steps to achieve them. Use this time when your energy levels are up to plan and strategize.",
         ],
         selfCare: [
-          "Journaling: Reflect on your career goals, accomplishments, and challenges. Write down your thoughts and feelings to gain clarity and set intentions for the month ahead.",
-          "Self-Care Rituals: Indulge in self-care activities like taking a warm bath, practicing deep relaxation techniques, or reading a book that inspires and motivates you.",
-          "Meditation and Mindfulness: Engage in daily meditation or mindfulness practices to reduce stress and increase focus. These practices can support your career development by improving mental clarity.",
+          "Self-reflection",
+          "Journaling",
+          "Self-Care Rituals",
+          "Meditation and Mindfulness",
         ],
         disclaimer:
           "Remember, personal development isn't just about career growth; it's also about self-care and well-being. Both aspects are interlinked, and taking care of yourself enhances your career potential. Adapt your personal development activities to what feels most fulfilling and appropriate for you during your menstrual cycle. Always prioritize self-care and listen to your body's signals.",
       },
     });
 
-    await FollicularPhase.create({
+    await FollicularPhaseSuggestions.create({
       foods: {
         vegetables: [
           "Carrots",
@@ -144,14 +145,27 @@ const seed = async () => {
           "Remember that portion sizes and individual dietary preferences play a significant role in your food choices. It's important to maintain a balanced diet and adapt it to your specific needs and taste. Also, keep in mind that these dietary suggestions are general guidelines, and if you have specific dietary concerns, allergies, or health conditions, it's a good idea to consult a healthcare professional or a registered dietitian for personalized advice.",
       },
       fitness: {
-        Day1ThroughDay2: [],
-        Day3ThroughDay5: [],
+        Day1ThroughDay3: ["Walking", "Swimming", "Cycling"],
+        Day4ThroughDay7: ["Running", "Squats", "Dead-lifts", "Push-ups"],
+        Day8ThroughDay10: ["HIIT Workouts", "Strength Training"],
         disclaimer:
           "Remember that these are general suggestions, and it's essential to adjust the intensity and duration of your workouts based on your comfort and energy levels. Always listen to your body and avoid pushing yourself too hard. If you experience severe pain or discomfort during exercise, it's okay to take a break or rest. Additionally, if you have specific fitness goals or conditions, consider consulting with a fitness professional for a tailored workout plan.",
       },
       personalDevelopment: {
-        careerDevelopment: [],
-        selfCare: [],
+        careerDevelopment: [
+          "Take online courses",
+          "Brainstorm",
+          "Prepare",
+          "Plan",
+          "Research",
+          "Set intentions for weeks to come",
+          "Start new projects",
+        ],
+        selfCare: [
+          "Meditation",
+          "Listen to Inspirational Podcasts",
+          "Quality time with loved ones",
+        ],
         disclaimer:
           "Remember, personal development isn't just about career growth; it's also about self-care and well-being. Both aspects are interlinked, and taking care of yourself enhances your career potential. Adapt your personal development activities to what feels most fulfilling and appropriate for you during your menstrual cycle. Always prioritize self-care and listen to your body's signals.",
       },

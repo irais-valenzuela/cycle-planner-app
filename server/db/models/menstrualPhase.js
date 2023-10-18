@@ -1,7 +1,7 @@
 const db = require("../db");
 const { DataTypes } = require("sequelize");
 
-const MenstrualPhase = db.define("MenstrualPhase", {
+const MenstrualPhaseSuggestions = db.define("MenstrualPhaseSuggestions", {
   foods: DataTypes.JSONB({
     vegetables: DataTypes.ARRAY(DataTypes.STRING),
     fruits: DataTypes.ARRAY(DataTypes.STRING),
@@ -24,4 +24,4 @@ const MenstrualPhase = db.define("MenstrualPhase", {
   }),
 });
 
-module.exports = MenstrualPhase;
+module.exports = MenstrualPhaseSuggestions;
