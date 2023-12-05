@@ -1,5 +1,10 @@
 const db = require("./db/db");
-const { User, MenstrualPhase } = require("./db/index");
+const {
+  User,
+  MenstrualPhaseSuggestions,
+  FollicularPhaseSuggestions,
+  OvulatoryPhaseSuggestions,
+} = require("./db/index");
 
 const seed = async () => {
   try {
@@ -24,7 +29,7 @@ const seed = async () => {
       getNotified: true,
     });
 
-    const menstrualPhaseSuggestions = await MenstrualPhase.create({
+    await MenstrualPhaseSuggestions.create({
       foods: {
         vegetables: [
           "Mushrooms",
@@ -67,7 +72,7 @@ const seed = async () => {
         ],
         nuts: [
           "Almonds",
-          "Pumpkin Seeds",
+          "Sunflower seeds",
           "Chia seeds",
           "Why: Healthy fats, and protein.",
         ],
@@ -101,18 +106,121 @@ const seed = async () => {
       },
       personalDevelopment: {
         careerDevelopment: [
-          "Career Research: Take this time to explore new career opportunities, courses, or certifications that can help you advance in your field.",
-          "Professional Reading: Read books, articles, or research related to your career or industry. It's an excellent way to stay informed and inspired.",
-          "Networking: Reach out to professional contacts or peers for virtual coffee chats or networking opportunities that don't require too much physical effort.",
-          "Professional Development Events: If there are virtual webinars, conferences, or workshops related to your field, consider participating to stay updated and network with professionals.",
+          "Career Research",
+          "Professional Reading",
+          "Networking",
+          "Professional Development Events",
           "Resume or Portfolio Update: If you're considering a job change or advancement, work on updating your resume, LinkedIn profile, or professional portfolio.",
           "Goal Setting: Review your career goals and set actionable steps to achieve them. Use this time when your energy levels are up to plan and strategize.",
         ],
         selfCare: [
-          "Journaling: Reflect on your career goals, accomplishments, and challenges. Write down your thoughts and feelings to gain clarity and set intentions for the month ahead.",
-          "Self-Care Rituals: Indulge in self-care activities like taking a warm bath, practicing deep relaxation techniques, or reading a book that inspires and motivates you.",
-          "Meditation and Mindfulness: Engage in daily meditation or mindfulness practices to reduce stress and increase focus. These practices can support your career development by improving mental clarity.",
+          "Self-reflection",
+          "Journaling",
+          "Self-Care Rituals",
+          "Meditation and Mindfulness",
         ],
+        disclaimer:
+          "Remember, personal development isn't just about career growth; it's also about self-care and well-being. Both aspects are interlinked, and taking care of yourself enhances your career potential. Adapt your personal development activities to what feels most fulfilling and appropriate for you during your menstrual cycle. Always prioritize self-care and listen to your body's signals.",
+      },
+    });
+
+    await FollicularPhaseSuggestions.create({
+      foods: {
+        vegetables: [
+          "Carrots",
+          "Broccoli",
+          "Sweet Potatoes",
+          "Artichoke",
+          "Zucchini",
+          "Why: During your menstrual cycle, iron stores might have been depleted due to blood loss. In the follicular phase, it's crucial to replenish these stores to prevent anemia and maintain energy levels.  Beta-carotene helps protect cells and tissues from oxidative damage. It supports the growth of healthy reproductive tissues and aids in overall cell function and health.",
+        ],
+        fruits: [
+          "Orange",
+          "Grapefruit",
+          "Lime",
+          "Avocado",
+          "Why: Vitamin C: These citrus fruits are rich in vitamin C, which is an antioxidant that supports immune function and helps the body absorb iron. This can be especially beneficial during the follicular phase to replenish iron levels after potential blood loss during menstruation.Healthy Fats: Avocado is a great source of healthy monounsaturated fats, which are beneficial for hormone regulation and overall health. Fiber: Avocado is also high in fiber, which can help regulate digestion and reduce bloating.",
+        ],
+        proteins: ["Skinless Chicken", "Lentils", "Trout", "Cod", "Eggs"],
+        dietaryRestrictionProteins: ["Lentils", "Chickpeas"],
+        grains: ["Oats", "Whole Wheat Bread"],
+        nuts: ["Cashews", "Pumpkin Seeds"],
+        other: ["Nut butters", "Olives"],
+        disclaimer:
+          "Remember that portion sizes and individual dietary preferences play a significant role in your food choices. It's important to maintain a balanced diet and adapt it to your specific needs and taste. Also, keep in mind that these dietary suggestions are general guidelines, and if you have specific dietary concerns, allergies, or health conditions, it's a good idea to consult a healthcare professional or a registered dietitian for personalized advice.",
+      },
+      fitness: {
+        Day1ThroughDay3: ["Walking", "Swimming", "Cycling", "Cardio"],
+        Day4ThroughDay7: ["Running", "Squats", "Hiking", "Push-ups"],
+        Day8ThroughDay10: ["Dancing", "Strength Training"],
+        disclaimer:
+          "Remember that these are general suggestions, and it's essential to adjust the intensity and duration of your workouts based on your comfort and energy levels. Always listen to your body and avoid pushing yourself too hard. If you experience severe pain or discomfort during exercise, it's okay to take a break or rest. Additionally, if you have specific fitness goals or conditions, consider consulting with a fitness professional for a tailored workout plan.",
+      },
+      personalDevelopment: {
+        careerDevelopment: [
+          "Take online courses",
+          "Brainstorm",
+          "Prepare",
+          "Plan",
+          "Research",
+          "Set intentions for weeks to come",
+          "Start new projects",
+        ],
+        selfCare: [
+          "Meditation",
+          "Listen to Inspirational Podcasts",
+          "Quality time with loved ones",
+        ],
+        disclaimer:
+          "Remember, personal development isn't just about career growth; it's also about self-care and well-being. Both aspects are interlinked, and taking care of yourself enhances your career potential. Adapt your personal development activities to what feels most fulfilling and appropriate for you during your menstrual cycle. Always prioritize self-care and listen to your body's signals.",
+      },
+    });
+
+    await OvulatoryPhaseSuggestions.create({
+      foods: {
+        vegetables: [
+          "Asparagus",
+          "Bell Peppers",
+          "Chard",
+          "Spinach",
+          "Tomato",
+          "Brussel Sprouts",
+          "Why: Provides essential vitamins and minerals like folate and iron, which are important during this phase.",
+        ],
+        fruits: [
+          "Strawberries",
+          "Raspberries",
+          "Coconut",
+          "Guava",
+          "Why: Beneficial for hormonal balance.",
+        ],
+        proteins: [
+          "Lamb",
+          "Salmon",
+          "Tuna",
+          "Shrimp",
+          "Why: Support hormonal balance",
+        ],
+        dietaryRestrictionProteins: ["Red lentils"],
+        grains: ["Quinoa"],
+        nuts: [
+          "Almonds",
+          "Pumpkin Seeds",
+          "Flax seeds",
+          "Why: These are good sources of healthy fats and fiber, which can help support your hormonal balance.",
+        ],
+        other: ["Coffee", "Chocolate"],
+        disclaimer:
+          "Remember that portion sizes and individual dietary preferences play a significant role in your food choices. It's important to maintain a balanced diet and adapt it to your specific needs and taste. Also, keep in mind that these dietary suggestions are general guidelines, and if you have specific dietary concerns, allergies, or health conditions, it's a good idea to consult a healthcare professional or a registered dietitian for personalized advice.",
+      },
+      fitness: {
+        Day1ThroughDay4: ["HIIT Workouts", "Boxing", "Cycling"],
+        disclaimer:
+          "Remember that these are general suggestions, and it's essential to adjust the intensity and duration of your workouts based on your comfort and energy levels. Always listen to your body and avoid pushing yourself too hard. If you experience severe pain or discomfort during exercise, it's okay to take a break or rest. Additionally, if you have specific fitness goals or conditions, consider consulting with a fitness professional for a tailored workout plan.",
+      },
+      personalDevelopment: {
+        careerDevelopment: ["Pitch ideas", "Network", "Collaborate"],
+        selfCare: ["Hang out with friends", "Be social"],
         disclaimer:
           "Remember, personal development isn't just about career growth; it's also about self-care and well-being. Both aspects are interlinked, and taking care of yourself enhances your career potential. Adapt your personal development activities to what feels most fulfilling and appropriate for you during your menstrual cycle. Always prioritize self-care and listen to your body's signals.",
       },
